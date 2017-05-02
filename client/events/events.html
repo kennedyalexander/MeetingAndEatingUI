@@ -1,3 +1,13 @@
-<template name="events">
-  {{> NewEvent }}
+<template name="Events">
+
+  <section class="events">
+    {{#if Template.subscriptionsReady}}
+      {{#each events}}
+        {{> Event}}
+      {{/each}}
+      {{else}}
+      <p> Loading...</p>
+      {{/if}}
+  </section>
+
 </template>

@@ -1,9 +1,7 @@
 <template name="PrimaryLayout">
-  <header>
-    <h1> OBRAK </h1>
-    {{> loginButtons}}
-  </header>
-<main>
+{{> Header}}
+  {{> SideNav}}
+<main class="main-layout">
   {{> Template.dynamic template=main}}
 </main>
 </template>

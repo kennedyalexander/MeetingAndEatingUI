@@ -1,0 +1,12 @@
+<template name="Event">
+  <article class="event">
+    <h3>{{title}}</h3>
+    <p>{{description}}</p>
+    <p>
+      {{#each guests}}
+        <span class="guest">{{name}}</span>
+      {{/each}}
+    </p>
+    <a href="/event/{{_id}}">View Details</a>
+  </article>
+</template>
