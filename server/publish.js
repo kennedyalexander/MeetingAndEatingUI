@@ -1,4 +1,5 @@
 Meteor.publish('events', function(){
+  //console.log(Events.find({host: this.userId}));
   return Events.find({host: this.userId});
 })
 
@@ -16,5 +17,9 @@ Meteor.publish('myDinners', function(){
 })
 
 Meteor.publish('allJoinableEvents', function(){
-  return Events.find({host: {$ne : this.userId}});
+  //.find({'name.1': {$exists: true}})
+  var userPK = this.userId
+  return Events.find({host: {$ne : userPK}});
 })
+//find all where host = userid or guests contains userId
+//find all where number of guests < number of spaces

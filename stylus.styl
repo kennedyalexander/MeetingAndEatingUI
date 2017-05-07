@@ -43,6 +43,10 @@ maroon = #6A2140
 light-red = #CA5765
 pink = #CF256D
 orange = #E8846B
+obrak-green = #23cdc2
+obrak-pink = #ff7f92
+obrak-orange = #ffb47f
+obrak-dark-orange = #ff9a47
 
 z = {
     neg: -7,
@@ -79,7 +83,7 @@ body
 
 header
     color #FFF
-    background: purp
+    background: obrak-orange
     padding 20px
     fixed top left
     width 100%
@@ -106,7 +110,7 @@ p
     margin-bottom 30px
 
 .billboard
-    background dark-purp
+    background obrak-orange
     color #FFF
     font-size 2em
     text-align center
@@ -148,12 +152,12 @@ p
 .btn, button
     display inline-block
     cursor pointer
-    background purp
+    background obrak-orange
     color #FFF
     text-decoration none
     text-transform uppercase
     padding 5px 15px
-    border solid 3px purp
+    border solid 3px obrak-orange
     border-radius 2px
     font-weight 800
     shadow-level(1)
@@ -163,9 +167,9 @@ p
         border-color @background
         shadow-level(2)
     &.btn-primary
-        background teal
-        border-color teal
-        color dark-purp
+        background obrak-green
+        border-color obrak-green
+
         &:hover
             background @background - 40
             border-color @background
@@ -176,12 +180,12 @@ p
             background @background - 20
             border-color @background
     &.btn-text
-        color purp
+        color obrak-dark-orange
         background transparent
-        border solid 2px purp
+        border solid 2px obrak-dark-orange
         shadow-level(0)
         &:hover
-            background teal
+            background obrak-green
             border-color @background
             shadow-level(1)
     &.btn-text-dark
@@ -191,7 +195,7 @@ p
         shadow-level(0)
         &:hover
             background #FFF
-            color dark-purp
+            color obrak-orange
             border-color @background
             shadow-level(1)
     &.btn-confirmation
@@ -200,7 +204,7 @@ p
         border solid 2px @background
         &:hover
             background @background - 20
-            border-color dark-purp
+            border-color obrak-orange
     &.btn-cancel
         color #FFF
         background transparent
@@ -263,7 +267,7 @@ input, select, textarea
     height 100px
     width 100%
     overflow hidden
-    background dark-purp
+    background obrak-orange
     color #FFF
     z-index: z.header
     shadow-level(2)
@@ -281,7 +285,7 @@ input, select, textarea
         text-align center
         trans()
         &:hover, &.active
-            background purp
+            background obrak-dark-orange
     i
         display block
         font-size 2em
@@ -298,13 +302,13 @@ input, select, textarea
         a
             padding 20px 10px
             &:hover, &.active
-                border-left 4px solid teal
+                border-left 4px solid obrak-green
     +above($large)
         width $side-nav-large
         a
             padding 20px 20px
             &:hover, &.active
-                border-left 10px solid teal
+                border-left 10px solid obrak-green
 
 .event
     background #FFF
@@ -317,7 +321,7 @@ input, select, textarea
     .remove-from-menu
         display none
     &.in-menu
-        background teal
+        background obrak-green
         color #FFF
         h3
             border-bottom: rgba(255,255,255, 0.6) solid 3px
@@ -388,4 +392,4 @@ input, select, textarea
         right 0
         left auto
         a
-            color dark-purp
+            color obrak-orange

@@ -5,6 +5,9 @@ Events = new Mongo.Collection('events');
 Events.allow({
   insert: function(userId, doc) {
     return !!userId;
+  },
+  update: function(userId, doc) {
+    return !!userId;
   }
 });
 
@@ -22,15 +25,19 @@ EventSchema = new SimpleSchema({
     label: "Seats"
   },
   guests: {
-      type: Array
+      type: Array,
+       optional: true,
+       autoform:{
+         type: "hidden"
+       }
    },
    "guests.$": Object,
    "guests.$.name": String,
-   "guests.$.id": {
-     type: String,
-     autoform: {
-       type: "hidden"
-     }
+   "guests.$.guestId": {
+     type: String
+    //  autoform: {
+    //    type: "hidden"
+    //  }
    },
 
 location: {
@@ -46,6 +53,13 @@ invitesOpen:{
   defaultValue: false,
   optional: true,
   autoform:{
+    type: "hidden"
+  }
+},
+dinnerStatus:{
+  type:String,
+  defaultValue: "unPublished",
+  autoform: {
     type: "hidden"
   }
 },
@@ -70,6 +84,32 @@ createdAt: {
   }
 }
 
+});
+
+
+Meteor.methods({
+  toggleDinnerAttendance:function( eventId){
+    if(Events.host != Meteor.userId()){
+       Events.update({_id:eventId},
+         { $addToSet: {'guests': {
+           name: Meteor.userId(),
+           guestId: Meteor.userId()
+         }
+       }
+     },
+   {getAutoValues:false});
+    }
+},//Problem with events.jost
+publishDinner:function(eventId, dinnerState){
+  if(Events.host == Meteor.userId()){
+  console.log("publishig dinner" + dinnerState);
+    Events.update({_id:eventId},
+      {$set: {
+        'dinnerStatus': dinnerState
+      }
+    });
+  }
+}
 });
 
 Events.attachSchema(EventSchema);

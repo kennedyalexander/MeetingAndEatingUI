@@ -1,3 +1,18 @@
 <template name="EventSingle">
   <h1>{{events.title}}</h1>
+  <p>{{events.description}}</p>
+    <p>{{events.seats}}</p>
+      <p>{{events.location}}</p>
+      <p>{{events.host}}</p>
+      <p>{{events.dinnerStatus}}</p>
+  <p>
+    {{#each events.guests}}
+      <span class="guest">Name: {{name}}</span>
+    {{/each}}
+  </p>
+  <p>
+    <button class="btn-join toggle-join">Join Meal</button>
+    <button class="btn-join toggle-status">Activate Meal</button>
+  </p>
+  <!-- <a href="/event/{{_id}}">View Details</a> -->
 </template>
