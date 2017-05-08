@@ -89,7 +89,7 @@ createdAt: {
 
 Meteor.methods({
   toggleDinnerAttendance:function( eventId){
-    if(Events.host != Meteor.userId()){
+    if(Events.findOne({_id:eventId}).host != Meteor.userId()){
        Events.update({_id:eventId},
          { $addToSet: {'guests': {
            name: Meteor.userId(),
@@ -101,13 +101,25 @@ Meteor.methods({
     }
 },//Problem with events.jost
 publishDinner:function(eventId, dinnerState){
-  if(Events.host == Meteor.userId()){
-  console.log("publishig dinner" + dinnerState);
-    Events.update({_id:eventId},
-      {$set: {
-        'dinnerStatus': dinnerState
-      }
-    });
+  const focusedDinner = Events.findOne({_id:eventId});
+  if((focusedDinner.host == Meteor.userId())&& focusedDinner.dinnerStatus != dinnerState){
+  console.log("publishing dinner" + dinnerState);
+    Events.update({_id:eventId}, {$set:{dinnerStatus: dinnerState}});
+  }
+},
+removeDiner:function(eventId, victim){
+  const focusedDinner = Events.findOne({_id:eventId});
+  console.log(focusedDinner.host);
+  console.log(Meteor.userId());
+  if(focusedDinner.host == Meteor.userId()){
+  console.log("Removing dinner");
+  Events.update({_id:eventId},
+    { $pull: {'guests': {
+      guestId: victim
+    }
+  }
+},
+{getAutoValues:false});
   }
 }
 });
