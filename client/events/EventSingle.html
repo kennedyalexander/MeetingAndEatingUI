@@ -1,18 +1,23 @@
 <template name="EventSingle">
-  <h1>{{events.title}}</h1>
-  <p>{{events.description}}</p>
-    <p>{{events.seats}}</p>
-      <p>{{events.location}}</p>
-      <p>{{events.host}}</p>
-      <p>{{events.dinnerStatus}}</p>
-  <p>
+  <article class="event">
+<h1>{{events.title}}</h1>
+
+<ul>
+  <li>{{events.description}}</li>
+    <li>{{events.seats}}</li>
+      <li>{{events.location}}</li>
+      <li>{{events.host}}</li>
+      <li>{{events.dinnerStatus}}</li>
+  <li>
     {{#each events.guests}}
-      <span class="guest">Name: {{name}}</span>
+      <p><span class="guest">Name: {{name}} <button class="btn-join purge-Guest" data-button='{"guestId" : "{{name}}"}'>Remove Guest</button></span></p>
     {{/each}}
-  </p>
+  </li>
+</ul>
   <p>
     <button class="btn-join toggle-join">Join Meal</button>
     <button class="btn-join toggle-status">Activate Meal</button>
   </p>
+</article>
   <!-- <a href="/event/{{_id}}">View Details</a> -->
 </template>

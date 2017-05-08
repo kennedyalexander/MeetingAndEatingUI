@@ -1,13 +1,13 @@
 <template name="Event">
-  <article class="event">
+  <article class="event {{dinnerRole}}">
+
     <h3>{{title}}</h3>
     <p>{{description}}</p>
     <p>
 
 Guests:
       {{#each guests}}
-      <p> helloo</p>
-        <span class="guest">{{name}}</span>
+        <p><span class="guest">{{name}}</span></p>
       {{/each}}
     </p>
     <a href="/event/{{_id}}">View Details</a>

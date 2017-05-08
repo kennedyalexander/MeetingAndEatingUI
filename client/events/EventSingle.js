@@ -22,8 +22,12 @@ Template.EventSingle.events({
   'click .toggle-status' : function(){
     console.log('clicked');
     Meteor.call('publishDinner', FlowRouter.getParam('id'), "hello");
+  },
+  'click .purge-Guest' : function(){
+    console.log('clicked' + this.guestId);
+    Meteor.call('removeDiner', FlowRouter.getParam('id'), this.guestId);
   }
-})
+});
 
 // Template.isNotHost(function(){
 //   console.log(self.userId);

@@ -11,4 +11,5 @@ Template.Events.helpers({
   events: ()=> {
     return Events.find({});
   }
+
 });
