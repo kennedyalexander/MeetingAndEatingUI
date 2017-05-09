@@ -3,7 +3,8 @@ import { Template } from 'meteor/templating';
 Template.MyDinners.onCreated(function(){
   var self = this;
   self.autorun(function(){
-    self.subscribe('myDinners');
+    self.subscribe('myGuesting');
+    self.subscribe('myHosting');
   })
 });
 

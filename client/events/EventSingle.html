@@ -10,7 +10,11 @@
       <li>{{events.dinnerStatus}}</li>
   <li>
     {{#each events.guests}}
-      <p><span class="guest">Name: {{name}} <button class="btn-join purge-Guest" data-button='{"guestId" : "{{name}}"}'>Remove Guest</button></span></p>
+      <p><span class="guest">Name: {{name}}
+        {{isHost}}
+      {{#if isHost}}<button class="btn-join purge-Guest" data-button='{"guestId" : "{{name}}"}'>Remove Guest</button>{{/if}}
+</span>
+    </p>
     {{/each}}
   </li>
 </ul>

@@ -12,6 +12,13 @@ Template.EventSingle.helpers({
   events: ()=> {
     var id = FlowRouter.getParam('id')
     return Events.findOne({_id: id});
+  },
+  isHost: function(){
+    if(Meteor.userId() == FlowRouter.getParam('id')){
+      return true;
+    } else {
+      return false;
+    }
   }
 });
 
@@ -20,11 +27,9 @@ Template.EventSingle.events({
     Meteor.call('toggleDinnerAttendance', FlowRouter.getParam('id'));
   },
   'click .toggle-status' : function(){
-    console.log('clicked');
     Meteor.call('publishDinner', FlowRouter.getParam('id'), "hello");
   },
   'click .purge-Guest' : function(){
-    console.log('clicked' + this.guestId);
     Meteor.call('removeDiner', FlowRouter.getParam('id'), this.guestId);
   }
 });

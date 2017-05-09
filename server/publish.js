@@ -1,7 +1,3 @@
-Meteor.publish('events', function(){
-  //console.log(Events.find({host: this.userId}));
-  return Events.find({host: this.userId});
-})
 
 Meteor.publish('singleEvent', function(id){
   check(id, String);
@@ -12,10 +8,21 @@ Meteor.publish('all', function(){
   return Events.find();
 })
 
-Meteor.publish('myDinners', function(){
-  return Events.find({host: this.userId});
+
+Meteor.publish('myGuesting', function(){
+  return Events.find({
+      guests:{
+        $elemMatch: {
+          guestId: this.userId
+        }
+      }
+    }
+  )
 })
 
+Meteor.publish('myHosting', function(){
+  return Events.find({host: this.userId});
+})
 Meteor.publish('allJoinableEvents', function(){
   //.find({'name.1': {$exists: true}})
   var userPK = this.userId
