@@ -13,8 +13,8 @@ Template.EventSingle.helpers({
     var id = FlowRouter.getParam('id')
     return Events.findOne({_id: id});
   },
-  isHost: function(){
-    if(Meteor.userId() == FlowRouter.getParam('id')){
+  isHost: function(hostId){
+    if(Meteor.userId() == hostId){
       return true;
     } else {
       return false;
