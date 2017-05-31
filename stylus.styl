@@ -402,3 +402,30 @@ input, select, textarea
         left auto
         a
             color obrak-orange
+.login-modal
+    position fixed
+    border solid 4px bright-blue
+    top 20%
+    left 50%
+    padding 20px
+    width 50%
+    // transform translate3d(25%, -80%, 0) scale(0.5)
+    background #FFF
+      opacity 0
+      &.open
+        opacity 1
+        transform translateX(-50%) scale(1)
+      h3
+        margin-top 0
+      .close-login
+        position absolute
+        top 0
+        right 0
+        display block
+        curson pointer
+        font-size 2em
+        padding 10px 15px
+        opacity 0.2
+
+.at-input
+  margin-bottom 10px
